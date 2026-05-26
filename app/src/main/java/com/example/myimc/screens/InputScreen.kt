@@ -10,14 +10,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-
+import androidx.compose.runtime.saveable.rememberSaveable
 @Composable
 fun InputScreen(navController: NavController) {
 
     // Estados
-    var nombre by remember { mutableStateOf("") }
-    var peso by remember { mutableStateOf("") }
-    var altura by remember { mutableStateOf("") }
+    var nombre by rememberSaveable { mutableStateOf("") }
+    var peso by rememberSaveable { mutableStateOf("") }
+    var altura by rememberSaveable { mutableStateOf("") }
 
     // Estado para mostrar error
     var mostrarError by remember { mutableStateOf(false) }
