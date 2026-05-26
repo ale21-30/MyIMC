@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myimc.ui.theme.MyIMCTheme
+import com.example.myimc.navigation.AppNavigation
+import com.example.myimc.ui.theme.MyIMCTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,13 +21,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyIMCTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+
+                AppNavigation()
         }
     }
 }
@@ -44,4 +41,5 @@ fun GreetingPreview() {
     MyIMCTheme {
         Greeting("Android")
     }
+}
 }
