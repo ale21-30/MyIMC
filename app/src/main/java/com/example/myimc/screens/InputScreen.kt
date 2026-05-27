@@ -17,7 +17,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.example.myimc.R
 @Composable
-fun InputScreen(navController: NavController) {
+fun InputScreen(
+    navController: NavController
+) {
 
     // Estados
     var nombre by rememberSaveable { mutableStateOf("") }
@@ -26,6 +28,23 @@ fun InputScreen(navController: NavController) {
 
     // Estado para mostrar error
     var mostrarError by remember { mutableStateOf(false) }
+
+    val shouldClear =
+        navController.currentBackStackEntry
+            ?.savedStateHandle
+            ?.get<Boolean>("limpiar")
+
+    if (shouldClear == true) {
+
+        nombre = ""
+        peso = ""
+        altura = ""
+        mostrarError = false
+
+        navController.currentBackStackEntry
+            ?.savedStateHandle
+            ?.set("limpiar", false)
+    }
 
     Column(
         modifier = Modifier
@@ -132,6 +151,10 @@ fun InputScreen(navController: NavController) {
                     val imc = pesoDouble / (alturaDouble * alturaDouble)
 
                     // Navegación
+                    navController.currentBackStackEntry
+                        ?.savedStateHandle
+                        ?.set("limpiar", true)
+
                     navController.navigate(
                         "resultado/$nombre/$imc"
                     )
