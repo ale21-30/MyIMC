@@ -11,6 +11,11 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
+import com.example.myimc.R
 @Composable
 fun InputScreen(navController: NavController) {
 
@@ -30,6 +35,17 @@ fun InputScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.logo_myimc),
+            contentDescription = "Logo MyIMC",
+
+            modifier = Modifier
+                .size(220.dp),
+
+            contentScale = ContentScale.Fit
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = "Calculadora IMC",
